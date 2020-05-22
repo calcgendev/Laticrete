@@ -1,0 +1,5 @@
+__pycache__/
+laticreteenv/
+media/static/*
+media/uploads/*
+uploads/*

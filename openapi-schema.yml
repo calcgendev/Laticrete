@@ -1,0 +1,1090 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /laticreteapp/productLine/:
+    get:
+      operationId: listproductLines
+      description: ''
+      parameters:
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    lineName:
+                      type: string
+                    image:
+                      type: string
+                      format: binary
+                    details:
+                      type: string
+                      nullable: true
+                      maxLength: 1000
+                  required:
+                  - lineName
+                  - image
+          description: ''
+    post:
+      operationId: CreateproductLine
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                lineName:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 1000
+              required:
+              - lineName
+              - image
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 1000
+                required:
+                - lineName
+                - image
+          description: ''
+  /laticreteapp/lineCategory/:
+    get:
+      operationId: listlineCategorys
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    lineName:
+                      type: string
+                    categoryName:
+                      type: string
+                      maxLength: 50
+                  required:
+                  - lineName
+                  - categoryName
+          description: ''
+    post:
+      operationId: CreatelineCategory
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id002
+              properties:
+                lineName:
+                  type: string
+                categoryName:
+                  type: string
+                  maxLength: 50
+              required:
+              - lineName
+              - categoryName
+          application/x-www-form-urlencoded:
+            schema: *id002
+          multipart/form-data:
+            schema: *id002
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  categoryName:
+                    type: string
+                    maxLength: 50
+                required:
+                - lineName
+                - categoryName
+          description: ''
+  /laticreteapp/product/:
+    get:
+      operationId: listproducts
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    categoryName:
+                      type: string
+                    productName:
+                      type: string
+                      maxLength: 50
+                    image:
+                      type: string
+                      format: binary
+                    details:
+                      type: string
+                      nullable: true
+                      maxLength: 10000
+                  required:
+                  - categoryName
+                  - productName
+                  - image
+          description: ''
+    post:
+      operationId: Createproduct
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id003
+              properties:
+                categoryName:
+                  type: string
+                productName:
+                  type: string
+                  maxLength: 50
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+              required:
+              - categoryName
+              - productName
+              - image
+          application/x-www-form-urlencoded:
+            schema: *id003
+          multipart/form-data:
+            schema: *id003
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryName:
+                    type: string
+                  productName:
+                    type: string
+                    maxLength: 50
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - categoryName
+                - productName
+                - image
+          description: ''
+  /laticreteapp/groutColor/:
+    get:
+      operationId: listgroutColors
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    colorID:
+                      type: string
+                      maxLength: 8
+                    groutName:
+                      type: string
+                      maxLength: 50
+                    details:
+                      type: string
+                      nullable: true
+                      maxLength: 10000
+                  required:
+                  - colorID
+                  - groutName
+          description: ''
+    post:
+      operationId: CreategroutColor
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id004
+              properties:
+                colorID:
+                  type: string
+                  maxLength: 8
+                groutName:
+                  type: string
+                  maxLength: 50
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+              required:
+              - colorID
+              - groutName
+          application/x-www-form-urlencoded:
+            schema: *id004
+          multipart/form-data:
+            schema: *id004
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  colorID:
+                    type: string
+                    maxLength: 8
+                  groutName:
+                    type: string
+                    maxLength: 50
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - colorID
+                - groutName
+          description: ''
+  /laticreteapp/pastProject/:
+    get:
+      operationId: listpastProjects
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    projectTitle:
+                      type: string
+                      maxLength: 50
+                    details:
+                      type: string
+                      nullable: true
+                      maxLength: 10000
+                    image:
+                      type: string
+                      format: binary
+                  required:
+                  - projectTitle
+                  - image
+          description: ''
+    post:
+      operationId: CreatepastProjects
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id005
+              properties:
+                projectTitle:
+                  type: string
+                  maxLength: 50
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+                image:
+                  type: string
+                  format: binary
+              required:
+              - projectTitle
+              - image
+          application/x-www-form-urlencoded:
+            schema: *id005
+          multipart/form-data:
+            schema: *id005
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  projectTitle:
+                    type: string
+                    maxLength: 50
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                  image:
+                    type: string
+                    format: binary
+                required:
+                - projectTitle
+                - image
+          description: ''
+  /laticreteapp/productLine/{lineName}/:
+    get:
+      operationId: RetrieveproductLine
+      description: ''
+      parameters:
+      - name: lineName
+        in: path
+        required: true
+        description: A unique value identifying this product line.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 1000
+                required:
+                - lineName
+                - image
+          description: ''
+    put:
+      operationId: UpdateproductLine
+      description: ''
+      parameters:
+      - name: lineName
+        in: path
+        required: true
+        description: A unique value identifying this product line.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id006
+              properties:
+                lineName:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 1000
+              required:
+              - lineName
+              - image
+          application/x-www-form-urlencoded:
+            schema: *id006
+          multipart/form-data:
+            schema: *id006
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 1000
+                required:
+                - lineName
+                - image
+          description: ''
+    patch:
+      operationId: PartialUpdateproductLine
+      description: ''
+      parameters:
+      - name: lineName
+        in: path
+        required: true
+        description: A unique value identifying this product line.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id007
+              properties:
+                lineName:
+                  type: string
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 1000
+          application/x-www-form-urlencoded:
+            schema: *id007
+          multipart/form-data:
+            schema: *id007
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 1000
+                required:
+                - lineName
+                - image
+          description: ''
+    delete:
+      operationId: DestroyproductLine
+      description: ''
+      parameters:
+      - name: lineName
+        in: path
+        required: true
+        description: A unique value identifying this product line.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /laticreteapp/lineCategory/{categoryName}/:
+    get:
+      operationId: RetrievelineCategory
+      description: ''
+      parameters:
+      - name: categoryName
+        in: path
+        required: true
+        description: A unique value identifying this line category.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  categoryName:
+                    type: string
+                    maxLength: 50
+                required:
+                - lineName
+                - categoryName
+          description: ''
+    put:
+      operationId: UpdatelineCategory
+      description: ''
+      parameters:
+      - name: categoryName
+        in: path
+        required: true
+        description: A unique value identifying this line category.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id008
+              properties:
+                lineName:
+                  type: string
+                categoryName:
+                  type: string
+                  maxLength: 50
+              required:
+              - lineName
+              - categoryName
+          application/x-www-form-urlencoded:
+            schema: *id008
+          multipart/form-data:
+            schema: *id008
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  categoryName:
+                    type: string
+                    maxLength: 50
+                required:
+                - lineName
+                - categoryName
+          description: ''
+    patch:
+      operationId: PartialUpdatelineCategory
+      description: ''
+      parameters:
+      - name: categoryName
+        in: path
+        required: true
+        description: A unique value identifying this line category.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id009
+              properties:
+                lineName:
+                  type: string
+                categoryName:
+                  type: string
+                  maxLength: 50
+          application/x-www-form-urlencoded:
+            schema: *id009
+          multipart/form-data:
+            schema: *id009
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  lineName:
+                    type: string
+                  categoryName:
+                    type: string
+                    maxLength: 50
+                required:
+                - lineName
+                - categoryName
+          description: ''
+    delete:
+      operationId: DestroylineCategory
+      description: ''
+      parameters:
+      - name: categoryName
+        in: path
+        required: true
+        description: A unique value identifying this line category.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /laticreteapp/product/{productName}/:
+    get:
+      operationId: Retrieveproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryName:
+                    type: string
+                  productName:
+                    type: string
+                    maxLength: 50
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - categoryName
+                - productName
+                - image
+          description: ''
+    put:
+      operationId: Updateproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id010
+              properties:
+                categoryName:
+                  type: string
+                productName:
+                  type: string
+                  maxLength: 50
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+              required:
+              - categoryName
+              - productName
+              - image
+          application/x-www-form-urlencoded:
+            schema: *id010
+          multipart/form-data:
+            schema: *id010
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryName:
+                    type: string
+                  productName:
+                    type: string
+                    maxLength: 50
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - categoryName
+                - productName
+                - image
+          description: ''
+    patch:
+      operationId: PartialUpdateproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id011
+              properties:
+                categoryName:
+                  type: string
+                productName:
+                  type: string
+                  maxLength: 50
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+          application/x-www-form-urlencoded:
+            schema: *id011
+          multipart/form-data:
+            schema: *id011
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryName:
+                    type: string
+                  productName:
+                    type: string
+                    maxLength: 50
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - categoryName
+                - productName
+                - image
+          description: ''
+    delete:
+      operationId: Destroyproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /laticreteapp/groutColor/{productName}/:
+    get:
+      operationId: Retrieveproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryName:
+                    type: string
+                  productName:
+                    type: string
+                    maxLength: 50
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - categoryName
+                - productName
+                - image
+          description: ''
+    put:
+      operationId: Updateproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id012
+              properties:
+                categoryName:
+                  type: string
+                productName:
+                  type: string
+                  maxLength: 50
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+              required:
+              - categoryName
+              - productName
+              - image
+          application/x-www-form-urlencoded:
+            schema: *id012
+          multipart/form-data:
+            schema: *id012
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryName:
+                    type: string
+                  productName:
+                    type: string
+                    maxLength: 50
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - categoryName
+                - productName
+                - image
+          description: ''
+    patch:
+      operationId: PartialUpdateproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id013
+              properties:
+                categoryName:
+                  type: string
+                productName:
+                  type: string
+                  maxLength: 50
+                image:
+                  type: string
+                  format: binary
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+          application/x-www-form-urlencoded:
+            schema: *id013
+          multipart/form-data:
+            schema: *id013
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  categoryName:
+                    type: string
+                  productName:
+                    type: string
+                    maxLength: 50
+                  image:
+                    type: string
+                    format: binary
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                required:
+                - categoryName
+                - productName
+                - image
+          description: ''
+    delete:
+      operationId: Destroyproduct
+      description: ''
+      parameters:
+      - name: productName
+        in: path
+        required: true
+        description: A unique value identifying this product.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /laticreteapp/pastProject/{projectTitle}/:
+    get:
+      operationId: RetrievepastProjects
+      description: ''
+      parameters:
+      - name: projectTitle
+        in: path
+        required: true
+        description: A unique value identifying this past projects.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  projectTitle:
+                    type: string
+                    maxLength: 50
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                  image:
+                    type: string
+                    format: binary
+                required:
+                - projectTitle
+                - image
+          description: ''
+    put:
+      operationId: UpdatepastProjects
+      description: ''
+      parameters:
+      - name: projectTitle
+        in: path
+        required: true
+        description: A unique value identifying this past projects.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id014
+              properties:
+                projectTitle:
+                  type: string
+                  maxLength: 50
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+                image:
+                  type: string
+                  format: binary
+              required:
+              - projectTitle
+              - image
+          application/x-www-form-urlencoded:
+            schema: *id014
+          multipart/form-data:
+            schema: *id014
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  projectTitle:
+                    type: string
+                    maxLength: 50
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                  image:
+                    type: string
+                    format: binary
+                required:
+                - projectTitle
+                - image
+          description: ''
+    patch:
+      operationId: PartialUpdatepastProjects
+      description: ''
+      parameters:
+      - name: projectTitle
+        in: path
+        required: true
+        description: A unique value identifying this past projects.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id015
+              properties:
+                projectTitle:
+                  type: string
+                  maxLength: 50
+                details:
+                  type: string
+                  nullable: true
+                  maxLength: 10000
+                image:
+                  type: string
+                  format: binary
+          application/x-www-form-urlencoded:
+            schema: *id015
+          multipart/form-data:
+            schema: *id015
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  projectTitle:
+                    type: string
+                    maxLength: 50
+                  details:
+                    type: string
+                    nullable: true
+                    maxLength: 10000
+                  image:
+                    type: string
+                    format: binary
+                required:
+                - projectTitle
+                - image
+          description: ''
+    delete:
+      operationId: DestroypastProjects
+      description: ''
+      parameters:
+      - name: projectTitle
+        in: path
+        required: true
+        description: A unique value identifying this past projects.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''

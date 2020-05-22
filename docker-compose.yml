@@ -1,0 +1,20 @@
+version: '3'
+
+services: 
+  db:
+    image: postgres
+    environment: 
+      - POSTGRES_DB=laticretedb
+      - POSTGRES_USER=laticreteuser
+      - POSTGRES_PASSWORD=quanta
+    volumes: 
+      - laticrete-db:/var/lib/postgresql/data
+  web:
+    build: .
+    ports: 
+     - "8000:8000"
+    depends_on: 
+      - db
+
+volumes: 
+  laticrete-db:
