@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import productLine, lineCategory, product,tileColor, solutionLine, solutionCategory, solution, groutColors, pastProjects, whereToBuy, Downloads, feedBacks, Carousel, applicationVideos
+from .models import productLine, lineCategory, product,tileColor, solutionLine, solutionCategory, solution, groutColors, pastProjects, whereToBuy, Downloads, feedBacks, Carousel, applicationVideos, aboutUs
 
 class productLineSerializer(serializers.ModelSerializer):
     lineName = serializers.CharField()
@@ -16,12 +16,14 @@ class lineCategorySerializer(serializers.ModelSerializer):
         model  = lineCategory
         fields = ('lineName','categoryName','image',)
 
+
 class productSerializer(serializers.ModelSerializer):
 
     class Meta:
         model  = product
         # fields = ('categoryName', 'productName', 'image', 'details','features',)
-        fields = ('categoryName', 'productName', 'image', 'details',)
+        fields = ('categoryName', 'productName', 'image', 'details', 'videoFile', 'pdfFile',)
+
 
 class productNameOnlySerializer(serializers.ModelSerializer):
 
@@ -35,11 +37,13 @@ class productNameOnlySerializer(serializers.ModelSerializer):
 #         model  = groutColor
 #         fields = ('colorID','groutName','details',)
 
+
 class pastProjectsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model  = pastProjects
         fields = ('projectTitle', 'details', 'image',)
+
 
 class pastProjectOnlySerializer(serializers.ModelSerializer):
 
@@ -47,17 +51,20 @@ class pastProjectOnlySerializer(serializers.ModelSerializer):
         model  = pastProjects
         fields = ('projectTitle', 'image',)
 
+
 class whereToBuySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = whereToBuy
         fields = ('country', 'storeName', 'address', 'postalCode', 'telephone', 'faxNumber', 'latitude', 'longitude',)
 
+
 class carouselSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Carousel
         fields = ('imageName', 'image',)
+
 
 class feedBackSerializer(serializers.ModelSerializer):
 
@@ -88,6 +95,7 @@ class oneDownloadSerializer(serializers.ModelSerializer):
         model = Downloads
         fields = ('fileName', 'pdfFile',)
 
+
 class oneapplicationVideosSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -115,12 +123,13 @@ class solutionCategorySerializer(serializers.ModelSerializer):
         model  = solutionCategory
         fields = ('lineName','categoryName','image',)
 
+
 class solutionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model  = solution
         # fields = ('categoryName', 'solutionName', 'image', 'details','features',)
-        fields = ('categoryName', 'solutionName', 'image', 'details',)
+        fields = ('categoryName', 'solutionName', 'image', 'details', 'videoFile', 'pdfFile',)
 
 
 class solutionNameOnlySerializer(serializers.ModelSerializer):
@@ -129,11 +138,13 @@ class solutionNameOnlySerializer(serializers.ModelSerializer):
         model = solution
         fields = ('solutionName', 'image','pk')
 
+
 class tileColorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = tileColor
         fields = ('colorName', 'image')
+
 
 class groutColorSerializer(serializers.ModelSerializer):
 
@@ -141,3 +152,9 @@ class groutColorSerializer(serializers.ModelSerializer):
         model = groutColors
         fields = ('colorName', 'image')
 
+
+class aboutUsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = aboutUs
+        fields = ('image', 'content', 'pk')

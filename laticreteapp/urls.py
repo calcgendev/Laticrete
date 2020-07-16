@@ -43,9 +43,11 @@ urlpatterns = [
     path('laticreteapp/feedback/', views.feedbackList.as_view(), name = 'feedback'),
     path('laticreteapp/allcarousel/', views.allcarouselList.as_view(), name = 'allcarousel'),
     path('laticreteapp/addfeedback/', views.addFeedback, name='addfeedback'),
+    path('laticreteapp/aboutus/', views.aboutUsList.as_view(), name = 'AboutUs'),
 
     path('laticreteapp/downloads/<str:pk>/',views.DownloadsDetail.as_view(), name= 'DownloadsDetail'),
     path('laticreteapp/applicationvideo/<str:pk>/',views.applicationVideosDetail.as_view(), name= 'applicationVideoDetail'),
+    path('laticreteapp/aboutus/<path:pk>/', views.aboutUsDetail.as_view(), name = 'AboutUsDetails')
 
     # static(settings.MEDIA_URL, document_root = settings.M)
 ] 

@@ -6,8 +6,8 @@ from rest_framework import permissions
 from rest_framework.filters import SearchFilter
 import json
 import random
-from .models import productLine, lineCategory, product,tileColor,solutionLine,solutionCategory, solutionCategory, solution, groutColors, pastProjects, whereToBuy, Downloads, Carousel, feedBacks, applicationVideos
-from .serializers import productLineSerializer,lineCategorySerializer, productSerializer, tileColorSerializer,solutionLineSerializer, solutionCategorySerializer, solutionSerializer, solutionNameOnlySerializer,groutColorSerializer, pastProjectsSerializer, pastProjectOnlySerializer,productNameOnlySerializer,  SearchSerializer, whereToBuySerializer, DownloadSerializer, carouselSerializer, feedBackSerializer, applicationVideosSerializer, oneDownloadSerializer, oneapplicationVideosSerializer
+from .models import productLine, lineCategory, product,tileColor,solutionLine,solutionCategory, solutionCategory, solution, groutColors, pastProjects, whereToBuy, Downloads, Carousel, feedBacks, applicationVideos, aboutUs
+from .serializers import productLineSerializer,lineCategorySerializer, productSerializer, tileColorSerializer,solutionLineSerializer, solutionCategorySerializer, solutionSerializer, solutionNameOnlySerializer,groutColorSerializer, pastProjectsSerializer, pastProjectOnlySerializer,productNameOnlySerializer,  SearchSerializer, whereToBuySerializer, DownloadSerializer, carouselSerializer, feedBackSerializer, applicationVideosSerializer, oneDownloadSerializer, oneapplicationVideosSerializer, aboutUsSerializer
 # Create your views here.
 
 class productLineList(generics.ListCreateAPIView):
@@ -51,6 +51,7 @@ class lineCategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = lineCategorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class productList(generics.ListCreateAPIView):
     queryset         = product.objects.all()
     serializer_class = productNameOnlySerializer
@@ -65,6 +66,7 @@ class productList(generics.ListCreateAPIView):
         if categoryname is not None:
             queryset = queryset.filter(categoryName = categoryname)
         return queryset
+
 
 class productDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset         = product.objects.all()
@@ -83,6 +85,7 @@ class productDetail(generics.RetrieveUpdateDestroyAPIView):
 #     data = json.dumps(lis)  
 #     # serialized_data = SearchSerializer(lis, many = True)
 #     return HttpResponse(data, content_type='application/json')
+
 
 def soldispatcher(request, solutionName=None,categoryName=None):
     solutionqueryset         = solution.objects.all()
@@ -115,30 +118,36 @@ class whereToBuyList(generics.ListCreateAPIView):
     serializer_class = whereToBuySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class DownloadList(generics.ListCreateAPIView):
     queryset         = Downloads.objects.all()
     serializer_class = DownloadSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 class DownloadsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset         = Downloads.objects.all()
     serializer_class = oneDownloadSerializer     
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class applicationVideosList(generics.ListCreateAPIView):
     queryset         = applicationVideos.objects.all()
     serializer_class = applicationVideosSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
+
+
 class applicationVideosDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset         = applicationVideos.objects.all()
     serializer_class = oneapplicationVideosSerializer 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class feedbackList(generics.ListCreateAPIView):
     queryset         = feedBacks.objects.all()
     serializer_class = feedBackSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 class carouselList(generics.ListCreateAPIView):
     # queryset         = sorted(Carousel.objects.all(), key=lambda x: random.random())[:5]
@@ -146,10 +155,12 @@ class carouselList(generics.ListCreateAPIView):
     serializer_class = carouselSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class allcarouselList(generics.ListCreateAPIView):
     queryset         = Carousel.objects.all()
     serializer_class = carouselSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
 
 def addFeedback(request):
     mes         = request.GET.get('message', None)
@@ -234,6 +245,7 @@ class solutionCategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = solutionCategorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class solutionList(generics.ListCreateAPIView):
     queryset         = solution.objects.all()
     serializer_class = solutionNameOnlySerializer
@@ -255,24 +267,40 @@ class solutionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = solutionSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class tileColorList(generics.ListCreateAPIView):
     queryset         = tileColor.objects.all()
     serializer_class = tileColorSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class tileColorDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset         = tileColor.objects.all()
     serializer_class = tileColorSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
- 
+
+
 class groutColorList(generics.ListCreateAPIView):
     queryset         = groutColors.objects.all()
     serializer_class = groutColorSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class groutColorDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset         = groutColors.objects.all()
     serializer_class = groutColorSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class aboutUsList(generics.ListCreateAPIView):
+    queryset         = aboutUs.objects.all()
+    serializer_class = aboutUsSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class aboutUsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset         = aboutUs.objects.all()
+    serializer_class = aboutUsSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 

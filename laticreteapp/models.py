@@ -30,7 +30,10 @@ class product(models.Model):
     categoryName    = models.ForeignKey(lineCategory, on_delete= models.CASCADE)
     productName     = models.CharField(max_length=50)
     image           = models.ImageField(upload_to='uploads/')
-    details         = models.CharField(max_length=10000, null=True)
+    details         = models.TextField(max_length=10000, null=True)
+    videoFile       = models.FileField(upload_to='static/', null=True, blank=True)
+    pdfFile         = models.FileField(upload_to='static/', null=True, blank=True)
+
     # features        = models.TextField(max_length = 10000, null = True)
 
     class Meta:
@@ -72,7 +75,10 @@ class solution(models.Model):
     categoryName    = models.ForeignKey(solutionCategory, on_delete= models.CASCADE)
     solutionName    = models.CharField(max_length=50)
     image           = models.ImageField(upload_to='uploads/')
-    details         = models.CharField(max_length=10000, null=True)
+    details         = models.TextField(max_length=10000, null=True)
+    videoFile       = models.FileField(upload_to='static/', null=True, blank=True)
+    pdfFile         = models.FileField(upload_to='static/', null=True, blank=True)
+
     # features        = models.TextField(max_length = 10000, null = True)
 
     class Meta:
@@ -87,7 +93,7 @@ class solution(models.Model):
 
 class pastProjects(models.Model):
     projectTitle    = models.CharField(max_length= 50, primary_key=True)
-    details         = models.CharField(max_length= 10000, null= True)
+    details         = models.TextField(max_length= 10000, null= True)
     image           = models.ImageField(upload_to='uploads/') 
 
     class Meta:
@@ -135,7 +141,7 @@ class feedBacks(models.Model):
     email           = models.CharField(max_length=50, null=True) 
     country         = models.CharField(max_length=30, null=True) 
     typeOfAssistance= models.CharField(max_length=1000, null=True)
-    message         = models.CharField(max_length=1000, null=True)
+    message         = models.TextField(max_length=1000, null=True)
 
     class Meta:
         verbose_name = 'Feedback'
@@ -179,3 +185,13 @@ class groutColors(models.Model):
     class Meta:
         verbose_name = 'Grout Color'
         verbose_name_plural = 'Grout Colors'
+
+class aboutUs(models.Model):
+    image           = models.ImageField(upload_to='uploads/')
+    content         = models.TextField(max_length = 10000, null = True)
+
+    class Meta:
+        verbose_name = 'About Us'
+        verbose_name_plural = 'About Us'
+
+
