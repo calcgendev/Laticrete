@@ -18,12 +18,18 @@ class lineCategorySerializer(serializers.ModelSerializer):
 
 
 class productSerializer(serializers.ModelSerializer):
-
+    videoFileName = serializers.SerializerMethodField()
+    pdfFileName = serializers.SerializerMethodField()
     class Meta:
         model  = product
         # fields = ('categoryName', 'productName', 'image', 'details','features',)
-        fields = ('categoryName', 'productName', 'image', 'details', 'videoFile', 'pdfFile',)
+        fields = ('categoryName', 'productName', 'image', 'details', 'videoFile', 'pdfFile','videoFileName', 'pdfFileName')
+        
+    def get_videoFileName(self, obj):
+        return obj.videoFile.name
 
+    def get_pdfFileName(self, obj):
+        return obj.pdfFile.name
 
 class productNameOnlySerializer(serializers.ModelSerializer):
 
@@ -125,11 +131,19 @@ class solutionCategorySerializer(serializers.ModelSerializer):
 
 
 class solutionSerializer(serializers.ModelSerializer):
+    videoFileName = serializers.SerializerMethodField()
+    pdfFileName = serializers.SerializerMethodField()
 
     class Meta:
         model  = solution
         # fields = ('categoryName', 'solutionName', 'image', 'details','features',)
-        fields = ('categoryName', 'solutionName', 'image', 'details', 'videoFile', 'pdfFile',)
+        fields = ('categoryName', 'solutionName', 'image', 'details', 'videoFile', 'pdfFile','videoFileName', 'pdfFileName')
+
+    def get_videoFileName(self, obj):
+        return obj.videoFile.name
+
+    def get_pdfFileName(self, obj):
+        return obj.pdfFile.name
 
 
 class solutionNameOnlySerializer(serializers.ModelSerializer):

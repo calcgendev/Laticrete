@@ -1,4 +1,5 @@
 from django.db import models
+import os
 # from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 class productLine(models.Model):
